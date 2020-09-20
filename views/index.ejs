@@ -1,9 +1,33 @@
 <html>
     <body>
-            <h1>File Upload</h1>
-            <form method='post' action='/file' enctype="multipart/form-data">
-            	<input type='file' name='justAfile'>
-            	<input type='submit'>
-            </form>
+        <h1>File Upload</h1>
+        <form method='post' action='/file' enctype="multipart/form-data">
+        	<input type='file' name='file'>
+        	<input type='submit'>
+        </form>
+		
+        <button id='btn_getFile'>get file</button>
+		<script type="text/javascript">
+			let btn_getFile = document.getElementById('btn_getFile').addEventListener('click', getFile);
+
+			function getFile(){
+				 //xhr Objekt erstellen                                              
+              xhr = new XMLHttpRequest();                                         
+                                                                                  
+              //request konfigurieren                                             
+              //1.Methode, 2.uri, 3.async true oder false.                        
+              xhr.open('get', '/getFile', true);                                
+                                                                                  
+              //function die bei einem response aufgerufen wird.                  
+              xhr.onload = function(){                                            
+                  if(this.status == 200){                                         
+                      console.log(this.responseText);                             
+                  }                                                               
+              }                                                                   
+                                                                                  
+              //http-request absetzen.                                            
+              xhr.send();       
+			}
+		</script>
     </body>
 </html>

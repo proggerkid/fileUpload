@@ -5,7 +5,7 @@ let httpServer = http.createServer(app);
 let router = require('./router');
 let fileupload = require('express-fileupload');
 
-app.set('views', '../views');
+app.set('views', 'views');
 app.set('view engine', 'ejs');
 app.use(fileupload());
 
